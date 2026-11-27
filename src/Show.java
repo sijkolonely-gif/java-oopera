@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Show {
     private String title;
@@ -16,7 +17,9 @@ public class Show {
     public String getTitle() { return title; }
     public int getDuration() { return duration; }
     public Director getDirector() { return director; }
-    public ArrayList<Actor> getListOfActors() { return listOfActors; }
+    public List<Actor> getListOfActors() {
+        return List.copyOf(listOfActors);
+    }
 
     // добавить актёра с проверкой на дубликат
     public void addActor(Actor actor) {
@@ -29,13 +32,26 @@ public class Show {
 
     // заменить актёра по фамилии
     public void replaceActor(Actor newActor, String surname) {
+        int index = -1;
         for (int i = 0; i < listOfActors.size(); i++) {
             if (listOfActors.get(i).getSurname().equals(surname)) {
-                listOfActors.set(i, newActor);
-                return;
+                index = i;
+                break;
             }
         }
-        System.out.println("Актёр с фамилией " + surname + " не найден в спектакле.");
+
+        if (index == -1) {
+            System.out.println("Актёр с фамилией " + surname + " не найден в спектакле.");
+            return;
+        }
+
+        if (listOfActors.contains(newActor)) {
+            System.out.println("Актёр " + newActor.getName() + " " + newActor.getSurname()
+                    + " уже участвует в спектакле.");
+            return;
+        }
+
+        listOfActors.set(index, newActor);
     }
 
     // распечатать список актёров

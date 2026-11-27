@@ -9,16 +9,26 @@ public class Theatre {
         Director director1 = new Director("Сергей", "Иванов", Gender.MALE, 10);
         Director director2 = new Director("Ольга", "Смирнова", Gender.FEMALE, 5);
 
+        // либретто
+        String operaLibretto = "Ночь перед Рождеством. Мороз крепчает, звёзды сияют. " +
+                "Вакула, кузнец, влюблён в красавицу Оксану, но она смеётся над ним. " +
+                "Чтобы доказать свою любовь, Вакула отправляется к царице за черевичками...";
+
+        String balletLibretto = "Юный принц Зигфрид встречает на берегу озера Одетту, " +
+                "заколдованную в лебедя злым волшебником Ротбартом. " +
+                "Только верная любовь может разрушить чары...";
+
         // автор музыки и хореограф
         String musicAuthor = "Пётр Чайковский";
         String choreographer = "Мариус Петипа";
 
         // спектакли
         Show show = new Show("Обычный спектакль", 120, director1);
-        Opera opera = new Opera("Травиата", 150, director2,
-                "Джузеппе Верди", "Текст либретто оперы...", 40);
+        Opera opera = new Opera("Кузнец Вакула", 150, director2,
+                musicAuthor, operaLibretto, 40);
+
         Ballet ballet = new Ballet("Лебединое озеро", 140, director1,
-                musicAuthor, "Текст либретто балета...", choreographer);
+                musicAuthor, balletLibretto, choreographer);
 
         // распределяем актёров
         show.addActor(actor1);
